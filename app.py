@@ -38,7 +38,7 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite3'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
-db.create_all()
+# db.create_all()
 
 app.secret_key = "hello"
 
@@ -326,9 +326,7 @@ def page404():
 
 @ app.route('/user_profile', methods=['GET', 'POST'])
 def user_profile():
-    username1 = session['user']
-    getinfo = User.query.filter_by(uname=username1).first()
-    return render_template("/log_reg_pro/user_profile.html", getinfo=getinfo)
+    return render_template("/log_reg_pro/user_profile.html")
 
 
 @ app.route('/recruiter_profile', methods=['GET', 'POST'])
@@ -642,6 +640,10 @@ def resume():
     getUsername = session['user']
     getinfo = User.query.filter_by(uname=getUsername).first()
     return render_template("/log_reg_pro/resume_1.html", getinfo=getinfo)
+
+@ app.route('/jobopenings')
+def jobopenings():
+    return render_template("/log_reg_pro/jobopenings.html")
 
 
 # @app.route('/add1', methods=['POST'])

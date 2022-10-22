@@ -24,7 +24,6 @@ from distutils.command.upload import upload
 from datetime import date
 from app import *
 
-
 def getSessionDetails():
     get_username = session['user']
     getuserinfo = User.query.filter_by(uname=get_username).first()
